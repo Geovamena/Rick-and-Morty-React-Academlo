@@ -3,6 +3,8 @@ import axios from 'axios'
 import './App.css'
 import Location from './components/Location'
 import CardResident from './components/CardResident'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
@@ -39,18 +41,32 @@ function App() {
         <button className='btn__submit'>Search</button>
       </form>
 
-        <div className='location__information'>
-          <Location infoData={infoData} />
+      <div className='location__information'>
+        <Location infoData={infoData} />
+      </div>
+      <div className='imagen__information'>
+        {infoData.residents?.map(url => (
+          <CardResident
+            key={url}
+            url={url} />
+        ))}
+      </div>
+
+      <footer>
+        <div className="footer1">
+          <div className="footer2">
+            <h3 >Contact Us:</h3>
+          </div>
+          <ol className="footer3">
+            <a href="mailto:geomenacontact@gmail.com" target="_blank"> <FontAwesomeIcon icon={faEnvelope}/></a>
+            <a href="https://www.linkedin.com/in/geovanni-mena-651b05240/" target="_blank"> <i className="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Geovamena" target="_blank"><i className="fa-brands fa-github"></i></a>
+          </ol>
         </div>
-        <div className='imagen__information'>
-          {infoData.residents?.map(url => (
-            <CardResident
-              key={url}
-              url={url} />
-          ))}
-        </div>
+      </footer>
     </div>
-  
+
+
   )
 }
 
